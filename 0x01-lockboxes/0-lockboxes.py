@@ -3,6 +3,7 @@
 
 def canUnlockAll(boxes):
     """Function to determine keys from list of boxes"""
+
     n = len(boxes)
     confirm = True
     for key in range(1, n - 1):

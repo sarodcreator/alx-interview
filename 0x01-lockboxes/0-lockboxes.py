@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Module to determine if a list of boxes contain keys to other boxes"""
 
+
 def canUnlockAll(boxes):
     """Function to determine keys from list of boxes"""
 
@@ -15,3 +16,4 @@ def canUnlockAll(boxes):
         if visited is False:
             return visited
     return confirm
+

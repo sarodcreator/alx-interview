@@ -1,26 +1,35 @@
 #!/usr/bin/python3
-"""Rotates a 2d mstrix"""
-from typing import List
+"""Rotates a 2D matrix"""
 
 
-def rotate_2d_matrix(matrix: List[List[int]]) -> None:
+def rotate_2d_matrix(matrix):
     """
-    Given an n x n 2D matrix, rotate it 90 degrees clockwise.
-
-    Prototype: def rotate_2d_matrix(matrix):
-    Do not return anything. The matrix must be edited in-place.
-    You can assume the matrix will have 2 dimensions and will not be empty.
+    Rotates a square 2D matrix 90 degrees clockwise in place.
+    
+    Args:
+        matrix (list of list of int): The matrix to rotate.
     """
+    n = len(matrix)
 
-    # getting the the matrix
-    m = len(matrix)
+    # Loop through each "layer" of the matrix from the outside in
+    for layer in range(n // 2):
+        first, last = layer, n - layer - 1
 
-    # transposing the matrix
-    for i in range(m):
-        for j in range(i + 1, m):
-            matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
+        for i in range(first, last):
+            # Calculate the offset for each layer
+            offset = i - first
 
-    # reversing the inner square
-    for i in range(m):
-        for j in range(m // 2):
-            matrix[i][j], matrix[i][m-j-1] = matrix[i][m-j-1], matrix[i][j]
+            # Save the top-left value
+            top_left = matrix[first][i]
+
+            # Move bottom-left to top-left
+            matrix[first][i] = matrix[last - offset][first]
+
+            # Move bottom-right to bottom-left
+            matrix[last - offset][first] = matrix[last][last - offset]
+
+            # Move top-right to bottom-right
+            matrix[last][last - offset] = matrix[i][last]
+
+            # Move saved top-left to top-right
+            matrix[i][last] = top_left

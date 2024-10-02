@@ -1,3 +1,7 @@
+#!/usr/bin/python3
+"""A function to determine the fewest number of coins needed
+   to meet a given amount total"""
+
 def makeChange(coins, total):
     """sort the coins to descending order (greedy) """
     coins.sort(reverse=False)

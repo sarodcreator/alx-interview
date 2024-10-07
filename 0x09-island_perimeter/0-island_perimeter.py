@@ -8,11 +8,15 @@ def island_perimeter(grid):
     :type grid: List[List[int]]
     return int
     """
+
+    if len(grid) == 0 or len(grid[0]) == 0:
+        return 0
+
     perimeter = 0
     connection = 0
     length_row = len(grid)
     length_col = len(grid[0])
-
+    
     for i in range(length_row):
         for j in range(length_col):
             if grid[i][j] == 1:
